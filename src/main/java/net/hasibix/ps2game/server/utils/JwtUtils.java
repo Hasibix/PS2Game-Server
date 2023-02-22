@@ -1,4 +1,4 @@
-package net.hasibix.stickman_playground.server.utils;
+package net.hasibix.ps2game.server.utils;
 
 import java.security.Key;
 import io.jsonwebtoken.Jwts;

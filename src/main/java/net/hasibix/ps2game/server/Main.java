@@ -1,9 +1,9 @@
-package net.hasibix.stickman_playground.server;
+package net.hasibix.ps2game.server;
 
 import java.time.LocalDateTime;
 import io.github.cdimascio.dotenv.Dotenv;
-import net.hasibix.stickman_playground.server.utils.Config;
-import net.hasibix.stickman_playground.server.utils.Logger;
+import net.hasibix.ps2game.server.utils.Config;
+import net.hasibix.ps2game.server.utils.Logger;
 
 public class Main {
     public static LocalDateTime startTime;

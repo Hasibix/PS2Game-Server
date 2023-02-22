@@ -1,4 +1,4 @@
-package net.hasibix.stickman_playground.server.utils;
+package net.hasibix.ps2game.server.utils;
 
 public class EqualsArray {
     public static Boolean Equals(Object obj, Object[] array) {

@@ -1,4 +1,4 @@
-package net.hasibix.stickman_playground.server.utils;
+package net.hasibix.ps2game.server.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -188,7 +188,7 @@ public class Logger {
         writeLog(text, Type.Error);
     }
 
-    public void trace(Exception e) {
+    public void trace(Throwable e) {
         writeLog(ExceptionUtils.getStackTrace(e), Type.Trace);
     }
 
