@@ -2,7 +2,7 @@
 
 This repo contains the source code for [PS2Game](https://discord.gg/RX5azB3NwP)'s server.
 
-PS2Game is a platformer sandbox 2D game. It is currently work in progress. This game is made in Godot Game Engine 4. The name "PS2Game" is just a temporary name. This name should be changed in the future.
+PS2Game is a **p**latformer **s**andbox **2**D game. It is currently work in progress. This game is made in Godot Game Engine 4. The name "PS2Game" is just a temporary name. This name should be changed in the future.
 
 This project is **COMPLETELY** free to use. Anyone can make use of this project for any kind of open source use, so long as said use is also under the AGPL license. For more info, consult [LICENSE.md](https://github.com/Hasibix/PS2Game/blob/master/LICENSE.md)
 
