@@ -5,20 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.hasibix.ps2game.server</groupId>
-    <artifactId>spgs</artifactId>
-    <version>SNAPSHOT-V3.0</version>
+    <artifactId>ps2s</artifactId>
+    <version>SNAPSHOT-V0.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
