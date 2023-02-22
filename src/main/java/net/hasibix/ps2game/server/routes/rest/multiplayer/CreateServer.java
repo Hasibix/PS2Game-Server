@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.endpoints.http.multiplayer;
+package net.hasibix.ps2game.server.routes.rest.multiplayer;
 
 import static spark.Spark.*;
 import spark.Request;

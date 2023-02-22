@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.endpoints.websocket.multiplayer;
+package net.hasibix.ps2game.server.routes.websocket.multiplayer;
 
 import java.io.IOException;
 import java.util.HashMap;
