@@ -4,7 +4,6 @@ import static spark.Spark.*;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Set;
-import javax.annotation.Nullable;
 import net.hasibix.ps2game.server.models.client.Route;
 import net.hasibix.ps2game.server.utils.ClassLoader;
 import net.hasibix.ps2game.server.utils.Logger;
@@ -44,37 +43,38 @@ public class RoutesHandler {
         }
     }
 
-    public void Listen(@Nullable int port) {
+    public void Listen(int port) {
         for (Route i : this.routes) {
             switch (i.routeType) {
                 case Rest_Get:
-                    // handle Rest_Get case
+                    get(i.path, i.run);
                     break;
                 case Rest_Head:
-                    // handle Rest_Head case
+                    head(i.path, i.run);
                     break;
                 case Rest_Post:
-                    // handle Rest_Post case
+                    post(i.path, i.run);
                     break;
                 case Rest_Put:
-                    // handle Rest_Put case
+                    put(i.path, i.run);
                     break;
                 case Rest_Delete:
-                    // handle Rest_Delete case
+                    delete(i.path, i.run);
                     break;
                 case Rest_Connect:
-                    // handle Rest_Connect case
+                    connect(i.path, i.run);
                     break;
                 case Rest_Options:
-                    // handle Rest_Options case
+                    options(i.path, i.run);
                     break;
                 case Rest_Trace:
-                    // handle Rest_Trace case
+                    trace(i.path, i.run);
                     break;
                 case Websocket:
-                    // handle Websocket case
+                    webSocket(i.path, i.runws);
                     break;
             }
         }
+        port(port != -1 ? port : 3000);
     }
 }

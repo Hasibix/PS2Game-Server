@@ -15,7 +15,6 @@ import javax.websocket.server.ServerEndpoint;
 import net.hasibix.ps2game.server.models.client.Message;
 import net.hasibix.ps2game.server.models.client.MessageDecoder;
 import net.hasibix.ps2game.server.models.client.MessageEncoder;
-import net.hasibix.ps2game.server.models.client.objects.User;
 import net.hasibix.ps2game.server.utils.Logger;
 
 @ServerEndpoint(value="/servers/{serverID}/chat", decoders=MessageDecoder.class, encoders=MessageEncoder.class)

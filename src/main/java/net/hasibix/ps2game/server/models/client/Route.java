@@ -16,12 +16,22 @@ public class Route {
     public final String name;
     public final String path;
     public final Type routeType;
-    public final spark.Route run;
+    public spark.Route run;
+    public Class<?> runws;
 
     public Route(String name, String path, Type routeType, spark.Route run) {
         this.name = name;
         this.path = path;
         this.routeType = routeType;
         this.run = run;
-    }    
+        this.runws = null;
+    }
+
+    public Route(String name, String path, Type routeType, Class<?> run) {
+        this.name = name;
+        this.path = path;
+        this.routeType = routeType;
+        this.run = null;
+        this.runws = run;
+    } 
 }
