@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.routes.websocket.multiplayer;
+package net.hasibix.ps2game.server.routes.websocket.multiplayer.sockets;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,19 +12,18 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
 import net.hasibix.ps2game.server.models.client.Message;
 import net.hasibix.ps2game.server.models.client.MessageDecoder;
 import net.hasibix.ps2game.server.models.client.MessageEncoder;
-import net.hasibix.ps2game.server.models.client.User;
+import net.hasibix.ps2game.server.models.client.objects.User;
 import net.hasibix.ps2game.server.utils.Logger;
 
 @ServerEndpoint(value="/servers/{serverID}/chat", decoders=MessageDecoder.class, encoders=MessageEncoder.class)
-public class ChatHandler {
+public class Chat {
     private Session session;
-    private static Set<ChatHandler> chatHandlers = new CopyOnWriteArraySet<>();
+    private static Set<Chat> chatHandlers = new CopyOnWriteArraySet<>();
     private static HashMap<String, String> users = new HashMap<>();
-    private static Logger logger = Logger.of(ChatHandler.class);
+    private static Logger logger = Logger.of(Chat.class);
 
     @OnOpen
     public void onOpen(Session session, @PathParam("serverID") String serverID, @PathParam("userID") String userID) {

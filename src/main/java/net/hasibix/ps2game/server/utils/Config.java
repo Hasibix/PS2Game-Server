@@ -16,8 +16,6 @@ import org.yaml.snakeyaml.Yaml;
 
 public class Config {
     private static Map<String, Object> data;
-    
-    public Config() {}
 
     private static final Yaml yaml = new Yaml();
 
@@ -46,7 +44,7 @@ public class Config {
     }
 
     private static String getResourceFileAsString(String fileName) throws IOException {
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        java.lang.ClassLoader classLoader = java.lang.ClassLoader.getSystemClassLoader();
         try (InputStream is = classLoader.getResourceAsStream(fileName)) {
             if (is == null) return null;
             try (InputStreamReader isr = new InputStreamReader(is);

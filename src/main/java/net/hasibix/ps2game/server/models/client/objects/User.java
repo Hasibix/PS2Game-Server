@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.models.client;
+package net.hasibix.ps2game.server.models.client.objects;
 
 import java.security.SecureRandom;
 import java.util.regex.Pattern;
