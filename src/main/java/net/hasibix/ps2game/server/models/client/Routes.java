@@ -22,9 +22,9 @@ public class Routes {
         public final String name;
         public final String path;
         public final Type routeType;
-        public final BiFunction<Request, Response, Object> run;
+        public final BiFunction<Request, Response, ?> run;
     
-        public Rest(String name, String path, Type routeType,  BiFunction<Request, Response, Object> run) {
+        public Rest(String name, String path, Type routeType,  BiFunction<Request, Response, ?> run) {
             this.name = name;
             this.path = path;
             this.routeType = routeType;
