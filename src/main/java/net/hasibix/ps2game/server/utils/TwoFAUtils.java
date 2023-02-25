@@ -1,13 +1,26 @@
 package net.hasibix.ps2game.server.utils;
 
 import com.warrenstrange.googleauth.GoogleAuthenticator;
+import com.warrenstrange.googleauth.ICredentialRepository;
 
 public class TwoFAUtils {
     private static final GoogleAuthenticator gAuth = new GoogleAuthenticator();
 
-    public static GoogleAuthenticator getClient() {
+    private TwoFAUtils() {}
+
+    public static TwoFAUtils Initialize() {
+        return new TwoFAUtils();
+    }
+
+    public GoogleAuthenticator getClient() {
         return gAuth;
     }
+    
+    public void setSecretKey(ICredentialRepository secretKeysCredentialRepository) {
+        gAuth.setCredentialRepository(secretKeysCredentialRepository);
+    }
+
+    
 }
 
 /* OLD VERSION

@@ -7,6 +7,8 @@ import javax.annotation.Nonnull;
 import com.harium.postgrest.Condition;
 import com.harium.postgrest.Insert;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
+import com.warrenstrange.googleauth.GoogleAuthenticatorKey;
+import com.warrenstrange.googleauth.ICredentialRepository;
 import net.hasibix.ps2game.server.models.client.exceptions.users.InvalidEmailException;
 import net.hasibix.ps2game.server.utils.Logger;
 import net.hasibix.ps2game.server.utils.ObjUtils;
@@ -14,7 +16,7 @@ import net.hasibix.ps2game.server.utils.Supabase;
 import net.hasibix.ps2game.server.utils.TwoFAUtils;
 
 public class User {
-    private static final GoogleAuthenticator gAuth = TwoFAUtils.getClient();
+    private static final GoogleAuthenticator gAuth = TwoFAUtils.Initialize().getClient();
 
     public enum Provider {
         Email,
@@ -33,14 +35,15 @@ public class User {
     @Nonnull private String password;
     @Nonnull private String avatarUrl;
     @Nonnull private boolean use2FA = false;
-    @Nonnull private String secretKey2FA = null;
+    @Nonnull private ICredentialRepository secretKey2FA = null;
     
     SecureRandom random = new SecureRandom();
     private static final Logger logger = Logger.of(User.class);
 
     public User() {
         this.id = Integer.toString(random.nextInt(10));
-        this.secretKey2FA = gAuth.createCredentials(this.id).getKey();
+        gAuth.createCredentials(this.id);
+        this.secretKey2FA = gAuth.getCredentialRepository();
     }
     
     public void setProvider(Provider provider) {
@@ -96,7 +99,7 @@ public class User {
         return avatarUrl;
     }
 
-    public String get2FASecKey() {
+    public ICredentialRepository get2FASecKey() {
         return secretKey2FA;
     }
 
