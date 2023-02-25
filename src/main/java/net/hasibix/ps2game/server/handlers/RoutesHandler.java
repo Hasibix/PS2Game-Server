@@ -9,7 +9,6 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketError;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
-
 import net.hasibix.ps2game.server.models.client.Routes;
 import net.hasibix.ps2game.server.utils.ClassLoader;
 import net.hasibix.ps2game.server.utils.Logger;
@@ -54,28 +53,28 @@ public class RoutesHandler {
             for (Routes.Rest i : this.routes) {
                 switch (i.routeType) {
                     case Get:
-                        get(i.path, (req, res) -> i.run.apply(req, res));
+                        get(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Head:
-                        head(i.path, (req, res) -> i.run.apply(req, res));
+                        head(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Post:
-                        post(i.path, (req, res) -> i.run.apply(req, res));
+                        post(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Put:
-                        put(i.path, (req, res) -> i.run.apply(req, res));
+                        put(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Delete:
-                        delete(i.path, (req, res) -> i.run.apply(req, res));
+                        delete(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Connect:
-                        connect(i.path, (req, res) -> i.run.apply(req, res));
+                        connect(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Options:
-                        options(i.path, (req, res) -> i.run.apply(req, res));
+                        options(i.path, (req, res) -> i.action.run(req, res));
                         break;
                     case Trace:
-                        trace(i.path, (req, res) -> i.run.apply(req, res));
+                        trace(i.path, (req, res) -> i.action.run(req, res));
                         break;
                 }
             }

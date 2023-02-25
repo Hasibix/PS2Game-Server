@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.models.client;
+package net.hasibix.ps2game.server.models.client.responses;
 
 public class Message {
     private String from;

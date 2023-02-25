@@ -1,14 +1,21 @@
-package net.hasibix.ps2game.server.models.client.objects;
+package net.hasibix.ps2game.server.models.client.payloads;
 
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.regex.Pattern;
 import javax.annotation.Nonnull;
-
+import com.harium.postgrest.Condition;
+import com.harium.postgrest.Insert;
+import com.warrenstrange.googleauth.GoogleAuthenticator;
 import net.hasibix.ps2game.server.models.client.exceptions.users.InvalidEmailException;
 import net.hasibix.ps2game.server.utils.Logger;
 import net.hasibix.ps2game.server.utils.ObjUtils;
+import net.hasibix.ps2game.server.utils.Supabase;
+import net.hasibix.ps2game.server.utils.TwoFAUtils;
 
 public class User {
+    private static final GoogleAuthenticator gAuth = TwoFAUtils.getClient();
+
     public enum Provider {
         Email,
         Apple,
@@ -25,12 +32,15 @@ public class User {
     @Nonnull private String email;
     @Nonnull private String password;
     @Nonnull private String avatarUrl;
-
+    @Nonnull private boolean use2FA = false;
+    @Nonnull private String secretKey2FA = null;
+    
     SecureRandom random = new SecureRandom();
     private static final Logger logger = Logger.of(User.class);
 
     public User() {
         this.id = Integer.toString(random.nextInt(10));
+        this.secretKey2FA = gAuth.createCredentials(this.id).getKey();
     }
     
     public void setProvider(Provider provider) {
@@ -58,6 +68,10 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
+    public void use2FA(boolean behaviour) {
+        this.use2FA = behaviour;
+    }
+
     public String getId() {
         return id;
     }
@@ -82,9 +96,17 @@ public class User {
         return avatarUrl;
     }
 
-    public User saveAndSync() {
-        // Save to database....
-        return this;
+    public String get2FASecKey() {
+        return secretKey2FA;
+    }
+
+    public void pushToDB() {
+        
+    }
+
+    public User pullFromDB() {
+        
+        return null;
     }
 
     public static boolean validateEmailAddress(String email) {

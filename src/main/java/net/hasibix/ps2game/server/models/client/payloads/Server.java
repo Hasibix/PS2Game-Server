@@ -1,4 +1,4 @@
-package net.hasibix.ps2game.server.models.client.objects;
+package net.hasibix.ps2game.server.models.client.payloads;
 
 import java.security.SecureRandom;
 import java.util.LinkedHashMap;
