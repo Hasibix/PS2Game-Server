@@ -31,10 +31,10 @@ public class RoutesHandler {
 
         public void LoadRoutes(String routesPackage) {
             try {
-                Set<Class<?>> clazzez = ClassLoader.loadFromPackage(routesPackage + ".rest");
+                Set<Class<?>> clazzez = ClassLoader.LoadFromPackage(routesPackage + ".rest");
                 
                 for (Class<?> i : clazzez) {
-                    Method register = i.getDeclaredMethod("register");
+                    Method register = i.getDeclaredMethod("Register");
                     register.invoke(null);
                 }
             } catch (Exception e) {
@@ -139,7 +139,7 @@ public class RoutesHandler {
 
         public void LoadRoutes(String routesPackage) {
             try {
-                Set<Class<?>> clazzez = ClassLoader.loadFromPackage(routesPackage + ".websocket");
+                Set<Class<?>> clazzez = ClassLoader.LoadFromPackage(routesPackage + ".websocket");
                 
                 for (Class<?> i : clazzez) {
                     Method register = i.getDeclaredMethod("register");

@@ -12,15 +12,18 @@ public class TwoFAUtils {
         return new TwoFAUtils();
     }
 
-    public GoogleAuthenticator getClient() {
+    public GoogleAuthenticator GetClient() {
         return gAuth;
     }
     
-    public void setSecretKey(ICredentialRepository secretKeysCredentialRepository) {
+    public void SetSecretKey(ICredentialRepository secretKeysCredentialRepository) {
         gAuth.setCredentialRepository(secretKeysCredentialRepository);
     }
 
-    
+    public String GetPairQRCodeImageUrl() {
+
+        return null;
+    }
 }
 
 /* OLD VERSION

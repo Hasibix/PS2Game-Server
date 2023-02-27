@@ -18,48 +18,52 @@ public class Server {
         this.id = Integer.toString(random.nextInt(10));
     }
     
-    public Server setName(String name) {
-        this.name = !ObjUtils.String.isEmpty(name) ? name : "Server";
+    public Server SetName(String name) {
+        this.name = !ObjUtils.String.IsEmpty(name) ? name : "Server";
         return this;
     }
     
-    public Server setIcon(String iconUrl) {
-        this.iconUrl = !ObjUtils.String.isEmpty(iconUrl) ? iconUrl : "";
+    public Server SetIcon(String iconUrl) {
+        this.iconUrl = !ObjUtils.String.IsEmpty(iconUrl) ? iconUrl : "";
         return this;
     }
 
-    public Server setMaxPlayers(int maxPlayers) {
+    public Server SetMaxPlayers(int maxPlayers) {
         this.maxPlayers = maxPlayers < 20 && maxPlayers > 0 ? maxPlayers : 20;
         return this;
     }
 
-    public Server joinAs(User player) {
-        players.putIfAbsent(player.getId(), player);
+    public Server JoinAs(User player) {
+        players.putIfAbsent(player.GetId(), player);
         return this;
     }
 
-    public String getId() {
+    public String GetId() {
         return id;
     }
 
-    public String getName() {
+    public String GetName() {
         return name;
     }
 
-    public String getIconUrl() {
+    public String GetIconUrl() {
         return iconUrl;
     }
 
-    public int getMaxPlayers() {
+    public int GetMaxPlayers() {
         return maxPlayers;
     }
 
-    public LinkedHashMap<String, User> getCurrentPlayers() {
+    public LinkedHashMap<String, User> GetCurrentPlayers() {
         return this.players;
     }
 
-    public Server saveAndSync() {
-        // Save to database....
-        return this;
+    public void PushToDB() {
+
+    }
+
+    public static Server PullFromDB() {
+
+        return null;
     }
 }

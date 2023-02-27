@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.google.common.reflect.ClassPath;
 
 public class ClassLoader {
-    public static Set<Class<?>> loadFromPackage(String packageName) throws IOException {
+    public static Set<Class<?>> LoadFromPackage(String packageName) throws IOException {
         return ClassPath.from(java.lang.ClassLoader.getSystemClassLoader())
           .getAllClasses()
           .stream()

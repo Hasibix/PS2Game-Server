@@ -90,7 +90,7 @@ public class Logger {
         Fatal
     }
 
-    private String getTypeString(boolean isColor, Type type) {
+    private String GetTypeString(boolean isColor, Type type) {
         switch(type) {
             case Info:
                 if(isColor) {
@@ -151,8 +151,8 @@ public class Logger {
     void writeLog(String text, Type type) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String line = String.format("[%s] [%s] [%s]: %s", Color.CYAN + dtf.format(now) + Color.RESET, getTypeString(true, type) + Color.RESET, this.clazz.getSimpleName(), text);
-        String lineNoColor = String.format("[%s] [%s] [%s]: %s", dtf.format(now), getTypeString(false, type), this.clazz.getName(), text);
+        String line = String.format("[%s] [%s] [%s]: %s", Color.CYAN + dtf.format(now) + Color.RESET, GetTypeString(true, type) + Color.RESET, this.clazz.getSimpleName(), text);
+        String lineNoColor = String.format("[%s] [%s] [%s]: %s", dtf.format(now), GetTypeString(false, type), this.clazz.getName(), text);
         System.out.println(line);
 
         if(logsPath != null) {

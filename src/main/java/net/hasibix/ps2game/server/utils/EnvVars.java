@@ -9,7 +9,7 @@ public class EnvVars {
     private static final Logger logger = Logger.of(EnvVars.class);
     private static Map<String, String> variables;
 
-    public static void load() {
+    public static void Load() {
         variables = System.getenv();
         
         try {
@@ -30,7 +30,7 @@ public class EnvVars {
         }
     }
 
-    public static String get(String key) {
+    public static String Get(String key) {
         return variables.get(key);
     }
 }

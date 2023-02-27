@@ -4,7 +4,7 @@ import net.hasibix.ps2game.server.handlers.RoutesHandler;
 import net.hasibix.ps2game.server.models.client.Routes;
 
 public class Rooms {
-    public static void register() {
+    public static void Register() {
         RoutesHandler.WebSocket.instance.AddRoute(
             new Routes.WebSocket(
                 "/api/v1/socket/multiplayer/rooms/:id",

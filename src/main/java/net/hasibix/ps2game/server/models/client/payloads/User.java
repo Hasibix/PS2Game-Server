@@ -16,7 +16,7 @@ import net.hasibix.ps2game.server.utils.Supabase;
 import net.hasibix.ps2game.server.utils.TwoFAUtils;
 
 public class User {
-    private static final GoogleAuthenticator gAuth = TwoFAUtils.Initialize().getClient();
+    private static final GoogleAuthenticator gAuth = TwoFAUtils.Initialize().GetClient();
 
     public enum Provider {
         Email,
@@ -46,73 +46,73 @@ public class User {
         this.secretKey2FA = gAuth.getCredentialRepository();
     }
     
-    public void setProvider(Provider provider) {
+    public void SetProvider(Provider provider) {
         this.provider = provider;
     }
 
-    public void setUsername(String username) {
-        this.username = !ObjUtils.String.isEmpty(username) ? username : "Player";
+    public void SetUsername(String username) {
+        this.username = !ObjUtils.String.IsEmpty(username) ? username : "Player";
     }
 
-    public void setEmail(String email) {
-        if(validateEmailAddress(email)) {
+    public void SetEmail(String email) {
+        if(ValidateEmailAddress(email)) {
             this.email = email;
         } else {
-            logger.error("An exception occured while trying to set email address of user " + this.id + "!");
+            logger.error("An exception occured while trying to Set email address of user " + this.id + "!");
             logger.trace(new InvalidEmailException("The provided email address is not valid!"));
         }
     }
 
-    public void setPassword(String password) {
+    public void SetPassword(String password) {
         this.password = password;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
+    public void SetAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
-    public void use2FA(boolean behaviour) {
+    public void Use2FA(boolean behaviour) {
         this.use2FA = behaviour;
     }
 
-    public String getId() {
+    public String GetId() {
         return id;
     }
 
-    public Provider getProvider() {
+    public Provider GetProvider() {
         return provider;
     }
 
-    public String getUsername() {
+    public String GetUsername() {
         return username;
     }
 
-    public String getEmail() {
+    public String GetEmail() {
         return email;
     }
 
-    public String getPassword() {
+    public String GetPassword() {
         return password;
     }
 
-    public String getAvatarUrl() {
+    public String GetAvatarUrl() {
         return avatarUrl;
     }
 
-    public ICredentialRepository get2FASecKey() {
+    public ICredentialRepository Get2FASecKey() {
         return secretKey2FA;
     }
 
-    public void pushToDB() {
+    public void PushToDB() {
         
     }
 
-    public User pullFromDB() {
+    public User PullFromDB() {
         
         return null;
     }
 
-    public static boolean validateEmailAddress(String email) {
+    public static boolean ValidateEmailAddress(String email) {
         String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         return Pattern.compile(regexPattern)
             .matcher(email)

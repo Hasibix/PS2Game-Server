@@ -19,7 +19,7 @@ public class Config {
 
     private static final Yaml yaml = new Yaml();
 
-    public static void load() {
+    public static void Load() {
         try {
             InputStream inputStream = new FileInputStream(new File("config.yml"));
             data = yaml.load(inputStream);
@@ -31,7 +31,7 @@ public class Config {
                 File file = new File("config.yml");
                 if (file.createNewFile()) {
                     FileWriter writer = new FileWriter(file);
-                    String data = getResourceFileAsString("config.yml");
+                    String data = GetResourceFileAsString("config.yml");
                     writer.write(data);
                     writer.close();
                     System.exit(1);
@@ -43,7 +43,7 @@ public class Config {
         }
     }
 
-    private static String getResourceFileAsString(String fileName) throws IOException {
+    private static String GetResourceFileAsString(String fileName) throws IOException {
         java.lang.ClassLoader classLoader = java.lang.ClassLoader.getSystemClassLoader();
         try (InputStream is = classLoader.getResourceAsStream(fileName)) {
             if (is == null) return null;
@@ -54,12 +54,12 @@ public class Config {
         }
     }
 
-    public static Object get(String key) {
+    public static Object Get(String key) {
         return data.get(key);
     }
     
-    public static <T> T get(String key, Class<T> type) {
-        return type.cast(get(key));
+    public static <T> T Get(String key, Class<T> type) {
+        return type.cast(Get(key));
     }
     
     @SuppressWarnings("unchecked")
@@ -69,7 +69,7 @@ public class Config {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T get(String key, String position, Class<T> type) {
+    public static <T> T Get(String key, String position, Class<T> type) {
         Map<String, Object> map = (Map<String, Object>) data.get(key); 
         return type.cast(map.get(position));
     }

@@ -18,7 +18,7 @@ public class ObjUtils {
     //        return Arrays.asList(array).contains(obj);
     //    }
     
-        public static Boolean isEmpty(java.lang.String val) {
+        public static Boolean IsEmpty(java.lang.String val) {
             return val == null || val.trim() == "";
         }
     }

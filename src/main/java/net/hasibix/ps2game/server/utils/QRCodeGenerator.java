@@ -14,16 +14,16 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 public class QRCodeGenerator {
-    public static byte[] generateQRCodeImage(String text, int width, int height) throws WriterException, IOException {
+    public static byte[] GenerateQRCodeImage(String text, int width, int height) throws WriterException, IOException {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, getQRCodeHints());
-        BufferedImage qrCodeImage = toBufferedImage(bitMatrix);
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, GetQRCodeHints());
+        BufferedImage qrCodeImage = ToBufferedImage(bitMatrix);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(qrCodeImage, "png", baos);
         return baos.toByteArray();
     }
 
-    private static BufferedImage toBufferedImage(BitMatrix matrix) {
+    private static BufferedImage ToBufferedImage(BitMatrix matrix) {
         int width = matrix.getWidth();
         int height = matrix.getHeight();
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -35,7 +35,7 @@ public class QRCodeGenerator {
         return image;
     }
 
-    private static Map<EncodeHintType, Object> getQRCodeHints() {
+    private static Map<EncodeHintType, Object> GetQRCodeHints() {
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
