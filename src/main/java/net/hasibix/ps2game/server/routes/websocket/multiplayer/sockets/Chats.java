@@ -7,7 +7,7 @@ public class Chats {
     public static void Register() {
         RoutesHandler.WebSocket.instance.AddRoute(
             new Routes.WebSocket(
-                "/api/v1/socket/multiplayer/rooms/:id/chats",
+                "/api/v1/ws/multiplayer/rooms/:id/chats",
                 (session) -> {
                     
                 },
